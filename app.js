@@ -11,6 +11,15 @@ const bookRoutes = require("./routes/books");
 
 app.use("/books", bookRoutes);
 
+app.get("/", async function (req, res, next) {
+  try {
+    //const books = await Book.findAll(req.query);
+    return res.json("{ books }");
+  } catch (err) {
+    return next(err);
+  }
+});
+
 /** 404 handler */
 
 app.use(function (req, res, next) {
